@@ -34,6 +34,16 @@ ralph-loop stop --taskId <task-id>
 }
 ```
 
+## Security
+
+RALPH-LOOP is designed with security in mind:
+
+- **Sandboxed execution** - All agent operations run within the designated workspace directory (`~/.openclaw/loops/<task-id>/`)
+- **No external network access** - Does not make external network requests
+- **Immutable constitution** - Agents cannot modify RULE.md or configuration files
+- **Controlled file operations** - Only creates files within the task workspace
+- **No credential storage** - Does not store or handle credentials
+
 ## License
 
 MIT
