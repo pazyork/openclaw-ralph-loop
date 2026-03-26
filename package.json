@@ -1,13 +1,43 @@
 {
   "name": "@openclaw/ralph-loop",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "description": "RALPH-LOOP: Long-running task execution with round-based context isolation",
   "type": "module",
-  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git-https://github.com/pazyork/openclaw-ralph-loop.git"
+  },
+  "files": [
+    "dist",
+    "openclaw.plugin.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
   "openclaw": {
+    "id": "ralph-loop",
+    "build": {
+      "openclawVersion": "2026.3.24",
+      "pluginSdkVersion": "2026.3.24"
+    },
+    "compat": {
+      "pluginApi": ">=1.0.0",
+      "builtWithOpenClawVersion": "2026.3.24",
+      "pluginSdkVersion": "2026.3.24",
+      "minGatewayVersion": "2026.3.24"
+    },
     "extensions": [
       "./index.ts"
     ]
-  }
+  },
+  "keywords": [
+    "openclaw",
+    "plugin",
+    "ralph-loop",
+    "long-running-tasks"
+  ],
+  "license": "MIT"
 }
