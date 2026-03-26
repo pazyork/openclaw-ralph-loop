@@ -1,16 +1,12 @@
-import { exec as execNonPooling } from "node:child_process";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { promisify } from "node:util";
 import { Type } from "@sinclair/typebox";
 import type { OpenClawPluginApi } from "../api.js";
 import { ContextInjector } from "./context-injector.js";
 import { LockManager } from "./lock.js";
 import { LoopStateManager } from "./state.js";
 import type { LoopConfig } from "./types.js";
-
-const exec = promisify(execNonPooling);
 
 type RalphLoopPluginConfig = {
   defaultMinRounds?: number;
@@ -97,13 +93,6 @@ async function handleStart(
   await fs.mkdir(taskDir, { recursive: true });
   await fs.mkdir(path.join(taskDir, "output"), { recursive: true });
   await fs.mkdir(path.join(taskDir, "rules"), { recursive: true });
-
-  // Initialize git
-  try {
-    await exec("git init", { cwd: taskDir });
-  } catch {
-    // git might not be available, continue anyway
-  }
 
   // Create default config
   const config: LoopConfig = { minRounds, maxRounds, pushEvery };
@@ -397,15 +386,6 @@ async function runRound(
       runId: `ralph-loop-${Date.now()}`,
       disableTools: false,
     });
-
-    // Commit after round
-    try {
-      await exec("git add -A && git commit -m 'round-" + round + " completed'", {
-        cwd: taskDir,
-      });
-    } catch {
-      // git commit might fail, continue
-    }
 
     return result;
   } catch (error) {
