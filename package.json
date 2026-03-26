@@ -1,0 +1,13 @@
+{
+  "name": "@openclaw/ralph-loop",
+  "version": "0.9.0",
+  "private": true,
+  "description": "RALPH-LOOP: Long-running task execution with round-based context isolation",
+  "type": "module",
+  "dependencies": {},
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  }
+}

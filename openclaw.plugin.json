@@ -1,0 +1,27 @@
+{
+  "id": "ralph-loop",
+  "name": "RALPH-LOOP",
+  "description": "Long-running task execution with round-based context isolation and constitutional constraints",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "defaultMinRounds": {
+        "type": "number",
+        "description": "Default minimum rounds if not specified by user"
+      },
+      "defaultMaxRounds": {
+        "type": "number",
+        "description": "Default maximum rounds if not specified by user"
+      },
+      "pushInterval": {
+        "type": "number",
+        "description": "Default push interval (every N rounds)"
+      },
+      "tickIntervalMs": {
+        "type": "number",
+        "description": "Loop tick interval in milliseconds (default: 5000)"
+      }
+    }
+  }
+}
