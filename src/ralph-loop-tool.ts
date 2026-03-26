@@ -109,7 +109,7 @@ async function handleStart(
   // Create default rules
   await fs.writeFile(
     path.join(taskDir, "rules", "default.md"),
-    "# Default Rules\n\nExecute the task. Do not stop until complete.",
+    "# Default Rules\n\nExecute the assigned task.",
     "utf-8",
   );
   await fs.writeFile(
@@ -351,7 +351,7 @@ function startLoop(
       } catch (roundError) {
         api.logger.error(`[ralph-loop] Round ${newRound} failed: ${roundError}`);
         await stateManager.update({ status: "waiting" });
-        await notifyProgress(api, taskId, newRound, `RALPH-LOOP round ${newRound} failed, will retry`);
+        await notifyProgress(api, taskId, newRound, `RALPH-LOOP round ${newRound} encountered an error`);
       } finally {
         // Release lock
         await lockManager.release();

@@ -45,7 +45,7 @@ export class ContextInjector {
 - \`RULE.md\` — Constitution
 - \`${defaultRule}\` — Round-specific rules
 
-**Deliverables Directory**: \`output/\` (any operations allowed)
+**Deliverables Directory**: \`output/\`
 
 **Prohibited Operations**:
 - Modify \`RULE.md\`, \`ralph-loop.config\`, or \`.ralph-loop.*\` files
